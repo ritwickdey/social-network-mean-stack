@@ -1,0 +1,17 @@
+.author {
+    display: inline-block;
+    width: 75%;
+    font-size: 14px;
+    text-transform: uppercase; 
+}
+
+.config {
+    display: inline-block;
+    text-align: right;
+    width: 20%;
+    font-size: 14px;
+}
+
+.config a {
+    padding: 0 5px;
+}

@@ -1,0 +1,15 @@
+<input class="form-control" type="text" [(ngModel)]='message.content'>
+<article class="card">
+    <div class="card-body">
+        {{message.content}}
+    </div>
+    <footer class="card-footer">
+        <div class="author">
+            {{message.author}}
+        </div>
+        <div class="config">
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+        </div>
+    </footer>
+</article>

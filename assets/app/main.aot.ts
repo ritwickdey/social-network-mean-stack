@@ -1,6 +1,6 @@
 import './polyfills';
 
-import { platformBrowser } from '@angular/platform-browser'
+import { platformBrowser } from '@angular/platform-browser';
 import { AppModule } from './app.module';
 import { enableProdMode } from '@angular/core';
 
