@@ -18,16 +18,17 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.5.2",
-    "zone.js": "^0.8.14",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
+    "core-js": "^2.4.1",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "hbs": "~4.0.1",
+    "mongoose": "^4.13.7",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "rxjs": "^5.5.2",
+    "serve-favicon": "~2.4.5",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.0.0",
