@@ -1,3 +1,5 @@
+import { Message } from './message.model';
+import { MessageService } from './messages.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MessageInputComponent implements OnInit {
-    constructor() { }
+    constructor(private messageService: MessageService) { }
 
     ngOnInit() { }
 
     onSave(val: string) {
+        const message: Message = {
+            content: val,
+            username: 'Ritwick'
+        };
+        this.messageService.addMessage(message);
         console.log(val);
     }
 
