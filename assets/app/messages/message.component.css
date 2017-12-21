@@ -15,3 +15,7 @@
 .config a {
     padding: 0 5px;
 }
+
+.card {
+    margin: 25px 0;
+}

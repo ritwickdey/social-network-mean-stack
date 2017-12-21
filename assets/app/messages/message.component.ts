@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Message } from './message.model';
-import { Input } from '@angular/core';
+
 
 @Component({
     selector: 'app-message',
@@ -11,9 +11,13 @@ import { Input } from '@angular/core';
 export class MessageComponent implements OnInit {
 
     @Input() message: Message;
+    @Output() editClicked = new EventEmitter<string>();
 
     constructor() { }
 
-
     ngOnInit() { }
+
+    onEdit() {
+        this.editClicked.emit('Edit');
+    }
 }

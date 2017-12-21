@@ -9,10 +9,10 @@ import { Message } from './messages/message.model';
 
 export class AppComponent implements OnInit {
 
-    message: Message = {
-        content: 'A message',
-        username: 'ritwickdey'
-    };
+    messages: Message[] = [
+        { content: 'A message', username: 'ritwickdey' },
+        { content: 'new message', username: 'akash' }
+    ];
 
 
     constructor() { }
