@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-message-list',
     template: `
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 offset-md-2">
                 <app-message
                     *ngFor="let message of messages"
                     (editClicked)="message.content = $event"
