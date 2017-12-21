@@ -9,12 +9,6 @@ import { Message } from './messages/message.model';
 
 export class AppComponent implements OnInit {
 
-    messages: Message[] = [
-        { content: 'A message', username: 'ritwickdey' },
-        { content: 'new message', username: 'akash' }
-    ];
-
-
     constructor() { }
 
     ngOnInit() { }
