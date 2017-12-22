@@ -10,9 +10,14 @@ import { MessageService } from './messages/messages.service';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthenticationComponent } from './auth/authentication.component';
 import { HeaderComponent } from './header.component';
+import { routing } from './app-routing';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        routing
+    ],
     declarations: [
         AppComponent,
         MessageComponent,

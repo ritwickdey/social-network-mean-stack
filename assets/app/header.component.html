@@ -1,11 +1,11 @@
 <header class="row">
-    <nav class="col-md-8 offset-md-2">
-        <ul class="nav nav-tabs nav-fill">
+    <nav class="col-md-12">
+        <ul class="nav nav-tabs nav-">
             <li class="nav-item">
-                <a class="nav-link active">Messenger</a>
+                <a [routerLink]="['/messages']" [routerLinkActive]="['active']" class="nav-link">Messenger</a>
             </ li>
             <li class="nav-item">
-                <a class="nav-link">Authentication</a>
+                <a [routerLink]="['/auth']" [routerLinkActive]="['active']" class="nav-link">Authentication</a>
             </li>
         </ul>
     </nav>
