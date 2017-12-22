@@ -1,6 +1,7 @@
 import { Message } from './message.model';
 import { MessageService } from './messages.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-mesage-input',
@@ -12,13 +13,20 @@ export class MessageInputComponent implements OnInit {
 
     ngOnInit() { }
 
-    onSave(val: string) {
+    onSubmit(form: NgForm) {
         const message: Message = {
-            content: val,
+            content: form.value.content ? form.value.content.trim() : null,
             username: 'Ritwick'
         };
+        if (!message.content) return;
         this.messageService.addMessage(message);
-        console.log(val);
+        console.log(message);
+        form.resetForm();
+    }
+
+    onKeyDown(event, form) {
+        if (event.keyCode === 13)
+            this.onSubmit(form);
     }
 
 }

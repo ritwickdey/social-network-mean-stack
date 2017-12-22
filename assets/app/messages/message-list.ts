@@ -1,3 +1,4 @@
+import { MessageService } from './messages.service';
 import { Message } from './message.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,8 +22,10 @@ export class MessageListComponent implements OnInit {
         { content: 'new message', username: 'akash' }
     ];
 
-    constructor() { }
+    constructor(private messageService: MessageService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.messages = this.messageService.getMessage();
+    }
 
 }
