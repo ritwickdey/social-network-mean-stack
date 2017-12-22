@@ -1,8 +1,8 @@
 <div class="col-md-8 offset-md-2">
     <form (ngSubmit)="onSubmit(myform)" #myform=ngForm>
         <div class="form-group">
-            <label for="content">Content</label>
-            <input id="content" (keydown)="onKeyDown($event, myform)" type="text" class="form-control" ngModel name="content" required>
+            <!-- <label for="content">Content</label> -->
+            <input id="content" placeholder="Enter a message" (keydown)="onKeyDown($event, myform)" type="text" class="form-control" ngModel name="content" required>
         </div>
         <button type="submit" [disabled]="!myform.valid" class="btn btn-primary">Send</button>
     </form>
