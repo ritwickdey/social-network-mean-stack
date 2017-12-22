@@ -8,6 +8,7 @@ import { MessageListComponent } from './messages/message-list';
 import { MessageInputComponent } from './messages/message-input.component';
 import { MessageService } from './messages/messages.service';
 import { MessagesComponent } from './messages/messages.component';
+import { AuthenticationComponent } from './auth/authentication.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
@@ -16,7 +17,8 @@ import { MessagesComponent } from './messages/messages.component';
         MessageComponent,
         MessageListComponent,
         MessageInputComponent,
-        MessagesComponent
+        MessagesComponent,
+        AuthenticationComponent
     ],
     providers: [
         MessageService
