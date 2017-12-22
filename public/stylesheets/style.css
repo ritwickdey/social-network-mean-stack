@@ -29,3 +29,8 @@ input.ng-invalid.ng-touched {
 .row {
   display: block;
 }
+
+.row-small-margin-top-bottom {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
