@@ -37,7 +37,7 @@ export class MessageInputComponent implements OnInit {
         else {
             const message: Message = {
                 content: form.value.content ? form.value.content.trim() : null,
-                username: 'Ritwick'
+                username: 'unknown'
             };
             if (!message.content) return;
 

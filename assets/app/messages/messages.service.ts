@@ -17,20 +17,21 @@ export class MessageService {
     constructor(private http: HttpClient) { }
 
     addMessage(message: Message) {
-        this.messages.push(message);
         return this.http
             .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
-            .map((response: HttpResponse<any>) => {
-                message.messageId = response.body.obj._id;
-                message.userId = response.body.obj.user._id;
-                message.username = response.body.obj.user.firstName;
-                // console.log(message);
-                return response.body;
+            .map((response: HttpResponse<any>) => response.body.obj)
+            .map(data => {
+                const msg = new Message(
+                    data.content,
+                    data.user.firstName,
+                    data._id,
+                    data.user._id
+                );
+                console.log(msg);
+                this.messages.push(msg);
+                return data;
             })
-            .catch((err: HttpErrorResponse) => {
-                this.messages.splice(this.messages.indexOf(message), 1);
-                return Observable.throw(err);
-            });
+            .catch((err: HttpErrorResponse) => Observable.throw(err));
     }
 
     getMessage() {
