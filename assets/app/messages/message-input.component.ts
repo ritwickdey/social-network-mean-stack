@@ -19,7 +19,13 @@ export class MessageInputComponent implements OnInit {
             username: 'Ritwick'
         };
         if (!message.content) return;
-        this.messageService.addMessage(message);
+
+        this.messageService.addMessage(message)
+            .subscribe(
+                data => console.log(data),
+                error => console.log(error)
+            );
+
         console.log(message);
         form.resetForm();
     }
