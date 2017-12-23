@@ -9,30 +9,52 @@ import { NgForm } from '@angular/forms';
 })
 
 export class MessageInputComponent implements OnInit {
+
+    message: Message;
+
     constructor(private messageService: MessageService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.messageService.messageIsEdit
+            .subscribe((message: Message) => {
+                console.log(this.message, message);
+                this.message = message;
+            });
+    }
 
     onSubmit(form: NgForm) {
-        const message: Message = {
-            content: form.value.content ? form.value.content.trim() : null,
-            username: 'Ritwick'
-        };
-        if (!message.content) return;
 
-        this.messageService.addMessage(message)
-            .subscribe(
+        if (this.message) {
+            this.message.content = form.value.content ?
+                form.value.content.trim() : this.message.content;
+            this.message = null;
+        }
+        else {
+            const message: Message = {
+                content: form.value.content ? form.value.content.trim() : null,
+                username: 'Ritwick'
+            };
+            if (!message.content) return;
+
+            this.messageService.addMessage(message)
+                .subscribe(
                 data => console.log(data),
                 error => console.log(error)
-            );
+                );
 
-        console.log(message);
+            console.log(message);
+        }
         form.resetForm();
     }
 
     onKeyDown(event, form) {
         if (event.keyCode === 13)
             this.onSubmit(form);
+    }
+
+    onClear(form: NgForm) {
+        this.message = null;
+        form.resetForm();
     }
 
 }

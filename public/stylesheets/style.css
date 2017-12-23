@@ -34,3 +34,11 @@ input.ng-invalid.ng-touched {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}

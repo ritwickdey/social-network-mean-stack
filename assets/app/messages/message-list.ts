@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
         <div class="col-md-8 offset-md-2">
                 <app-message
                     *ngFor="let message of messages"
-                    (editClicked)="message.content = $event"
                     [message]="message">
                 </app-message>
         </div>
@@ -17,10 +16,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class MessageListComponent implements OnInit {
 
-    messages: Message[] = [
-        { content: 'A message', username: 'ritwickdey' },
-        { content: 'new message', username: 'akash' }
-    ];
+    messages: Message[] = [];
 
     constructor(private messageService: MessageService) { }
 
