@@ -9,6 +9,7 @@ const Message = require('../models/message');
 
 router.get('/', (req, res, next) => {
     Message.find()
+        .populate('user', 'firstName')
         .then(messages => {
             res.status(200).json({
                 message: 'Suceess',

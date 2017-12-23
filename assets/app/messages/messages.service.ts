@@ -22,7 +22,8 @@ export class MessageService {
             .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
             .map((response: HttpResponse<any>) => {
                 message.messageId = response.body.obj._id;
-                message.userId = response.body.obj.user;
+                message.userId = response.body.obj.user._id;
+                message.username = response.body.obj.user.firstName;
                 // console.log(message);
                 return response.body;
             })
@@ -37,7 +38,12 @@ export class MessageService {
             .map((response: HttpResponse<any>) => {
                 this.messages = response.body.obj
                     .map(message =>
-                        new Message(message.content, 'fake User', message._id, message.user)
+                        new Message(
+                            message.content,
+                            message.user.firstName,
+                            message._id,
+                            message.user._id
+                        )
                     );
                 return this.messages;
             })
