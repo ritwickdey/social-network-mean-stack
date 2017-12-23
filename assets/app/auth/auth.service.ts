@@ -17,4 +17,10 @@ export class AuthService {
             .catch((err: HttpErrorResponse) => Observable.throw(err));
     }
 
+    signin(user: User) {
+        return this.http.post('/user/signin', user, { observe: 'response' })
+            .map((response: HttpResponse<any>) => response.body)
+            .catch((err: HttpErrorResponse) => Observable.throw(err));
+    }
+
 }
