@@ -25,6 +25,7 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "hbs": "~4.0.1",
+    "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.7",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "~1.9.0",

@@ -26,6 +26,13 @@ const userSchema = new Schema({
     }]
 });
 
+userSchema.methods.toJSON = function () {
+    return Object.assign(this.toObject(), {
+        password: undefined,
+        __v: undefined
+    });
+};
+
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);
