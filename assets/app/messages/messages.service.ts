@@ -22,6 +22,7 @@ export class MessageService {
             .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
             .map((response: HttpResponse<any>) => {
                 message.messageId = response.body.obj._id;
+                message.userId = response.body.obj.user;
                 // console.log(message);
                 return response.body;
             })
@@ -36,7 +37,7 @@ export class MessageService {
             .map((response: HttpResponse<any>) => {
                 this.messages = response.body.obj
                     .map(message =>
-                        new Message(message.content, 'fake User', message._id, null)
+                        new Message(message.content, 'fake User', message._id, message.user)
                     );
                 return this.messages;
             })
