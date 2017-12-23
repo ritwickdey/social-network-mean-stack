@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
+const User = require("../models/user");
 const { MY_SECRET_KEY } = require('../jwt-key/jwt-key');
 
 const Message = require('../models/message');
@@ -37,16 +38,25 @@ router.use('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const message = new Message({
-        content: req.body.content
-    });
+    const decoded = jwt.decode(req.query.token);
+    User.findById(decoded.user._id)
+        .then(user => {
+            if (!user) throw new Error('User Not Found');
 
-    message.save()
-        .then(result => {
-            res.status(201).json({
-                message: 'Saved Message',
-                obj: result
+            const message = new Message({
+                content: req.body.content,
+                user: user
             });
+
+            message.save().then(result => {
+                user.messages.push(result);
+                user.save();
+                res.status(201).json({
+                    message: 'Saved Message',
+                    obj: result
+                });
+            });
+
         })
         .catch(err => {
             console.log(err);
