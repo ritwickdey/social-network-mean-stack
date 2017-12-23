@@ -1,13 +1,13 @@
 <header class="row">
     <nav class="col-md-8 offset-md-2">
-        <ul class="nav nav-tabs nav-justified">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a [routerLink]="['signup']" [routerLinkActive]="['active']" class="nav-link">Signup</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!isLoggedIn()">
                 <a [routerLink]="['signin']" [routerLinkActive]="['active']" class="nav-link">Signin</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isLoggedIn()">
                 <a [routerLink]="['logout']" [routerLinkActive]="['active']" class="nav-link">logout</a>
             </li>
         </ul>
