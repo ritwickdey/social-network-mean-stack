@@ -19,7 +19,7 @@ export class MessageService {
     addMessage(message: Message) {
         this.messages.push(message);
         return this.http
-            .post('/message', message, { observe: 'response' })
+            .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
             .map((response: HttpResponse<any>) => {
                 message.messageId = response.body.obj._id;
                 // console.log(message);
@@ -32,7 +32,7 @@ export class MessageService {
     }
 
     getMessage() {
-        return this.http.get('/message', { observe: 'response' })
+        return this.http.get('/message' + this.getTokenQuery(), { observe: 'response' })
             .map((response: HttpResponse<any>) => {
                 this.messages = response.body.obj
                     .map(message =>
@@ -48,7 +48,7 @@ export class MessageService {
         this.messages.splice(msgIndex, 1);
 
         return this.http
-            .delete('/message/' + message.messageId, { observe: 'response' })
+            .delete('/message/' + message.messageId + this.getTokenQuery(), { observe: 'response' })
             .map((response: HttpResponse<any>) => response.body)
             .catch((err: HttpErrorResponse) => {
                 this.messages.splice(msgIndex, 0, message);
@@ -67,5 +67,10 @@ export class MessageService {
 
     editMessage(message: Message) {
         this.messageIsEdit.emit(message);
+    }
+
+    private getTokenQuery() {
+        const token = localStorage.getItem('token');
+        return token ? '?token=' + token : '';
     }
 }
