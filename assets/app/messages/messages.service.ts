@@ -44,7 +44,17 @@ export class MessageService {
     }
 
     deleteMessage(message: Message) {
-        this.messages.splice(this.messages.indexOf(message), 1);
+        const msgIndex = this.messages.indexOf(message);
+        this.messages.splice(msgIndex, 1);
+
+        return this.http
+            .delete('/message/' + message.messageId, { observe: 'response' })
+            .map((response: HttpResponse<any>) => response.body)
+            .catch((err: HttpErrorResponse) => {
+                this.messages.splice(msgIndex, 0, message);
+                return Observable.throw(err);
+            });
+
     }
 
     updateMessage(message: Message) {
