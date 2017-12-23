@@ -60,7 +60,7 @@ export class MessageService {
 
     updateMessage(message: Message) {
         return this.http
-            .patch('/message/' + message.messageId, message, { observe: 'response' })
+            .patch('/message/' + message.messageId + this.getTokenQuery(), message, { observe: 'response' })
             .map((response: HttpResponse<any>) => response.body)
             .catch((err: HttpErrorResponse) => Observable.throw(err));
 
