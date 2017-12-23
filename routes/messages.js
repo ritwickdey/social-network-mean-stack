@@ -45,7 +45,7 @@ router.patch('/:id', (req, res, next) => {
     Message.findById(req.params.id)
         .then(message => {
             if (!message)
-                return res.status(500).json({
+                return res.status(404).json({
                     title: 'No Message Found!',
                     error: {
                         message: 'Message Not Found!'
@@ -69,6 +69,32 @@ router.patch('/:id', (req, res, next) => {
             });
         });
 
+});
+
+router.delete('/:id', (req, res, next) => {
+    Message.findByIdAndRemove(req.params.id)
+        .then(message => {
+            if (!message) {
+                return res.status(404).json({
+                    title: 'No Message Found!',
+                    error: {
+                        message: 'Message Not Found!'
+                    }
+                });
+            }
+            res.status(200).json({
+                message: 'Message Deleted',
+                obj: message
+            });
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                title: 'An Error Occurred',
+                error: err
+            });
+        });
 });
 
 module.exports = router;
