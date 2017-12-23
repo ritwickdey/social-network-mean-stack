@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const MY_SECRET_KEY = 'jcs#dkb%&cke545fajs#$ahcg6@c54';
+const { MY_SECRET_KEY } = require('../jwt-key/jwt-key');
 
 router.post('/', (req, res, next) => {
     const user = new User({
@@ -16,11 +16,11 @@ router.post('/', (req, res, next) => {
     });
 
     user.save().then(result => {
-            res.status(201).json({
-                message: 'User Created',
-                obj: result
-            });
-        })
+        res.status(201).json({
+            message: 'User Created',
+            obj: result
+        });
+    })
         .catch(err => {
             console.log(err);
             res.status(500).json({
@@ -32,8 +32,8 @@ router.post('/', (req, res, next) => {
 
 router.post('/signin', (req, res, next) => {
     User.findOne({
-            email: req.body.email
-        })
+        email: req.body.email
+    })
         .then(user => {
             if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
                 return res.status(401).json({
@@ -46,15 +46,15 @@ router.post('/signin', (req, res, next) => {
             jwt.sign({
                 user: user
             }, MY_SECRET_KEY, {
-                expiresIn: 7200
-            }, (err, token) => {
-                if (err) throw new Error('Token Creation Failed');
-                res.status(201).json({
-                    title: 'Login successful. Credentials are matched',
-                    token: token,
-                    userId: user._id
+                    expiresIn: 7200
+                }, (err, token) => {
+                    if (err) throw new Error('Token Creation Failed');
+                    res.status(201).json({
+                        title: 'Login successful. Credentials are matched',
+                        token: token,
+                        userId: user._id
+                    });
                 });
-            });
         })
         .catch(err => {
             console.log(err);
