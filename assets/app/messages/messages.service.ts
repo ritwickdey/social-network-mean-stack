@@ -20,8 +20,15 @@ export class MessageService {
         this.messages.push(message);
         return this.http
             .post('/message', message, { observe: 'response' })
-            .map((response: HttpResponse<any>) => response.body)
-            .catch((err: HttpErrorResponse) => Observable.throw(err));
+            .map((response: HttpResponse<any>) => {
+                message.messageId = response.body.obj._id;
+                // console.log(message);
+                return response.body;
+            })
+            .catch((err: HttpErrorResponse) => {
+                this.messages.splice(this.messages.indexOf(message), 1);
+                return Observable.throw(err);
+            });
     }
 
     getMessage() {
@@ -29,7 +36,7 @@ export class MessageService {
             .map((response: HttpResponse<any>) => {
                 this.messages = response.body.obj
                     .map(message =>
-                        new Message(message.content, 'fake User', message.id, null)
+                        new Message(message.content, 'fake User', message._id, null)
                     );
                 return this.messages;
             })
@@ -41,6 +48,10 @@ export class MessageService {
     }
 
     updateMessage(message: Message) {
+        return this.http
+            .patch('/message/' + message.messageId, message, { observe: 'response' })
+            .map((response: HttpResponse<any>) => response.body)
+            .catch((err: HttpErrorResponse) => Observable.throw(err));
 
     }
 

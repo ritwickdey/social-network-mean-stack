@@ -27,6 +27,11 @@ export class MessageInputComponent implements OnInit {
         if (this.message) {
             this.message.content = form.value.content ?
                 form.value.content.trim() : this.message.content;
+
+            this.messageService.updateMessage(this.message)
+            .subscribe(
+                res => console.log(res)
+            );
             this.message = null;
         }
         else {
