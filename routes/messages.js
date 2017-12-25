@@ -50,14 +50,14 @@ router.post('/', (req, res, next) => {
             });
 
             message.save().then(result => {
-                user.messages.push(result);
-                user.save();
-                res.status(201).json({
-                    message: 'Saved Message',
-                    obj: result
+                user.messages.push(result._id);
+                user.save().then(() => {
+                    res.status(201).json({
+                        message: 'Saved Message',
+                        obj: result
+                    });
                 });
             });
-
         })
         .catch(err => {
             console.log(err);
