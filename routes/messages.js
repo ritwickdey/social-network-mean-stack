@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const User = require("../models/user");
-const { MY_SECRET_KEY } = require('../jwt-key/jwt-key');
+const { JWT_SECRET_KEY } = require('../secret/secret-keys');
 
 const Message = require('../models/message');
 
@@ -27,7 +27,7 @@ router.get('/', (req, res, next) => {
 
 // &token=xxxx
 router.use('/', (req, res, next) => {
-    jwt.verify(req.query.token, MY_SECRET_KEY, (err, decoded) => {
+    jwt.verify(req.query.token, JWT_SECRET_KEY, (err, decoded) => {
         if (err) {
             return res.status(401).json({
                 title: 'Not Authenticated',

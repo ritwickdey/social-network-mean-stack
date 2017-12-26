@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { MY_SECRET_KEY } = require('../jwt-key/jwt-key');
+const { JWT_SECRET_KEY } = require('../secret/secret-keys');
 
 router.post('/', (req, res, next) => {
     const user = new User({
@@ -41,7 +41,7 @@ router.post('/signin', (req, res, next) => {
                     }
                 });
             }
-            jwt.sign({ user: user }, MY_SECRET_KEY, { expiresIn: 7200 }, (err, token) => {
+            jwt.sign({ user: user }, JWT_SECRET_KEY, { expiresIn: 7200 }, (err, token) => {
                 if (err) throw new Error('Token Creation Failed');
                 res.status(201).json({
                     title: 'Login successful. Credentials are matched',
