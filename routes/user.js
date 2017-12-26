@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { JWT_SECRET_KEY } = require('../secret/secret-keys');
+const { JWT_SECRET_KEY } = require('../secret/config');
 
 router.post('/', (req, res, next) => {
     const user = new User({

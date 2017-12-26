@@ -10,7 +10,7 @@ const appRoutes = require('./routes/app');
 const messageRoutes = require('./routes/messages');
 const userRoutes = require('./routes/user');
 
-const { MONGODB_URI } = require('./secret/secret-keys');
+const { MONGODB_URI } = require('./secret/config');
 
 const app = express();
 mongoose.connect(MONGODB_URI, {
