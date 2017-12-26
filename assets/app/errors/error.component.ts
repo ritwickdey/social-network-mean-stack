@@ -1,4 +1,4 @@
-import { Error } from './error.model';
+import { MyError } from './error.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class ErrorComponent implements OnInit {
 
-    error: Error;
+    error: MyError;
     display = 'none';
 
     constructor() { }
