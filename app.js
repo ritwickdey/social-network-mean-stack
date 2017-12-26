@@ -10,8 +10,10 @@ const appRoutes = require('./routes/app');
 const messageRoutes = require('./routes/messages');
 const userRoutes = require('./routes/user');
 
+const { MONGODB_URI } = require('./secret/secret-keys');
+
 const app = express();
-mongoose.connect('mongodb://localhost:27017/social-network', {
+mongoose.connect(MONGODB_URI, {
     useMongoClient: true
 });
 mongoose.Promise = global.Promise;
