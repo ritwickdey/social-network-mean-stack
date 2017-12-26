@@ -13,6 +13,7 @@ import { routing } from './app.routing';
 import { ErrorComponent } from './errors/error.component';
 
 import { ErrorService } from './errors/error.service';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { ErrorService } from './errors/error.service';
         ErrorComponent
     ],
     providers: [
-        ErrorService
+        ErrorService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

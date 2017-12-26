@@ -6,7 +6,6 @@ import { LogoutComponent } from './logout.component';
 import { SigninComponent } from './signin.component';
 import { SignupComponent } from './signup.component';
 
-import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -19,9 +18,6 @@ import { AuthService } from './auth.service';
         LogoutComponent,
         SigninComponent,
         SignupComponent,
-    ],
-    providers: [
-        AuthService
-    ],
+    ]
 })
 export class AuthModule { }
