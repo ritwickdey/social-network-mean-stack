@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MessageModule } from './messages/message.module';
-import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './auth/authentication.component';
@@ -20,8 +19,7 @@ import { AuthService } from './auth/auth.service';
         BrowserModule,
         routing,
         HttpClientModule,
-        MessageModule,
-        AuthModule
+        MessageModule
     ],
     declarations: [
         AppComponent,
