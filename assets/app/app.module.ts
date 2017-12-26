@@ -8,7 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './auth/authentication.component';
 import { HeaderComponent } from './header.component';
-import { routing } from './app-routing';
+import { routing } from './app.routing';
 
 import { ErrorComponent } from './errors/error.component';
 
