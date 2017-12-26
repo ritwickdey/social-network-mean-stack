@@ -1,3 +1,4 @@
+import { ErrorService } from './../errors/error.service';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -14,13 +15,13 @@ export class MessageService {
     messageIsEdit = new EventEmitter<Message>();
 
     private messages: Message[] = [];
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     addMessage(message: Message) {
         return this.http
-            .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
-            .map((response: HttpResponse<any>) => response.body.obj)
-            .map(data => {
+        .post('/message' + this.getTokenQuery(), message, { observe: 'response' })
+        .map((response: HttpResponse<any>) => response.body.obj)
+        .map(data => {
                 const msg = new Message(
                     data.content,
                     data.user.firstName,
@@ -31,7 +32,10 @@ export class MessageService {
                 this.messages.push(msg);
                 return data;
             })
-            .catch((err: HttpErrorResponse) => Observable.throw(err));
+            .catch((err: HttpErrorResponse) => {
+                this.errorService.handleError(err.error);
+                return Observable.throw(err);
+            });
     }
 
     getMessage() {
@@ -48,7 +52,10 @@ export class MessageService {
                     );
                 return this.messages;
             })
-            .catch((err: HttpErrorResponse) => Observable.throw(err));
+            .catch((err: HttpErrorResponse) => {
+                this.errorService.handleError(err.error);
+                return Observable.throw(err);
+            });
     }
 
     deleteMessage(message: Message) {
@@ -60,6 +67,7 @@ export class MessageService {
             .map((response: HttpResponse<any>) => response.body)
             .catch((err: HttpErrorResponse) => {
                 this.messages.splice(msgIndex, 0, message);
+                this.errorService.handleError(err.error);
                 return Observable.throw(err);
             });
 
@@ -69,7 +77,10 @@ export class MessageService {
         return this.http
             .patch('/message/' + message.messageId + this.getTokenQuery(), message, { observe: 'response' })
             .map((response: HttpResponse<any>) => response.body)
-            .catch((err: HttpErrorResponse) => Observable.throw(err));
+            .catch((err: HttpErrorResponse) => {
+                this.errorService.handleError(err.error);
+                return Observable.throw(err);
+            });
 
     }
 

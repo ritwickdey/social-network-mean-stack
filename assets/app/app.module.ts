@@ -17,6 +17,7 @@ import { SigninComponent } from './auth/signin.component';
 import { SignupComponent } from './auth/signup.component';
 import { AuthService } from './auth/auth.service';
 import { ErrorComponent } from './errors/error.component';
+import { ErrorService } from './errors/error.service';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { ErrorComponent } from './errors/error.component';
     ],
     providers: [
         MessageService,
-        AuthService
+        AuthService,
+        ErrorService
     ],
     bootstrap: [AppComponent]
 })
