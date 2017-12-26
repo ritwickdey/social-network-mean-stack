@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "build": "del-cli public/js/app && webpack --config webpack.config.dev.js --progress --profile --watch",
+    "start": "npm run build:prod && node ./bin/www",
+    "start:dev" : "node ./bin/www",
+    "build:dev": "del-cli public/js/app && webpack --config webpack.config.dev.js --progress --profile --watch",
     "build:prod": "del-cli public/js/app && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && npm run cleanup",
     "cleanup": "del-cli public/js/app/**/*.js public/js/app/**/*.js.map !public/js/app/bundle.js !public/js/app/*.chunk.js assets/app/**/*.ngfactory.ts assets/app/**/*.shim.ts assets/app/**/*.ngsummary.json assets/app/**/*.ngstyle.ts"
   },
