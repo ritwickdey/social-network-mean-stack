@@ -1,7 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  overflow: hidden;
 }
 
 a {
@@ -48,6 +47,12 @@ input.ng-invalid.ng-touched {
   color: #495057;
   background-color: #fff;
   border-color: #ddd #ddd #ddd;
+}
+
+body, 
+html {
+  height: 100vh;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 750px) {
