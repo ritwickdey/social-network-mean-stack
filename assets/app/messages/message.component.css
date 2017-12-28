@@ -1,12 +1,7 @@
-.msg {
-    height: 100%;
-    width: 100%;
-}
-
 .msg-card {
     position: relative;
     max-width: 45%;
-    min-width: 30%;
+    min-width: 40%;
     display: block;
     color: #fff;
     border-radius: 17px;
@@ -72,4 +67,16 @@
 
 .msg-card-left .msg-config {
     float: right;
+}
+
+@media (max-width: 975px) {
+    .msg-card {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 750px) {
+    .msg-card {
+        max-width: 50%;
+    }
 }
