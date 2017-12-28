@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { MessagesComponent } from './messages.component';
 import { MessageInputComponent } from './message-input.component';
-import { MessageListComponent } from './message-list';
+import { MessageListComponent } from './message-list.component';
 import { MessageComponent } from './message.component';
 import { MessageService } from './messages.service';
 

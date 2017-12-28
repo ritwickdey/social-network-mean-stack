@@ -1,0 +1,8 @@
+.chat-room {
+    display: block;
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0px 25px;
+    margin: 0 -15px;
+}

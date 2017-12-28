@@ -4,14 +4,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-message-list',
-    template: `
-        <div>
-                <app-message
-                    *ngFor="let message of messages"
-                    [message]="message">
-                </app-message>
-        </div>
-    `
+    templateUrl: 'message-list.component.html',
+    styleUrls: ['message-list.component.css']
 })
 
 export class MessageListComponent implements OnInit {
