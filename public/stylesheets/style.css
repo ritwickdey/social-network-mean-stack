@@ -48,3 +48,9 @@ input.ng-invalid.ng-touched {
   background-color: #fff;
   border-color: #ddd #ddd #ddd;
 }
+
+@media (max-width: 750px) {
+  .row {
+    margin: 0px -20px;
+  }
+}

@@ -35,15 +35,17 @@
 .msg-card-right {
     float: right;
     background-color: #ff6a07;
-    padding: 8px 15px;
+    padding: 5px 15px;
+    z-index: 1;
 }
 .msg-card-right::after {
     content: '';
     position: absolute;
-    top: 18px;
-    right: -18px;
+    top: 12px;
+    right: -15px;
     border: 18px solid transparent;
     border-top: 18px solid #ff6a07;
+    z-index: -1;
 }
 
 .msg-card-right .msg-author {
@@ -53,15 +55,17 @@
 .msg-card-left {
     float: left;
     background-color:  var(--left-bg-color);;
-    padding: 8px 15px;
+    padding: 5px 15px;
+    z-index: 1;
 }
 .msg-card-left::after {
     content: '';
     position: absolute;
-    top: 18px;
-    left: -18px;
+    top: 12px;
+    left: -15px;
     border: 18px solid transparent;
     border-top: 18px solid var(--left-bg-color);
+    z-index: -1;
 }
 
 .msg-card-left .msg-config {
@@ -76,6 +80,9 @@
 
 @media (max-width: 750px) {
     .msg-card {
-        max-width: 50%;
+        max-width: 90%;
+    }
+    .msg-card-body {
+        font-size: 14px;
     }
 }
