@@ -14,6 +14,8 @@ export class MessageComponent implements OnInit {
 
     @Input() message: Message;
 
+    byPassTrustStyle = this.sanitizer.bypassSecurityTrustStyle;
+
     constructor(private messageService: MessageService, private sanitizer: DomSanitizer) { }
 
     ngOnInit() { }
@@ -31,7 +33,7 @@ export class MessageComponent implements OnInit {
         return localStorage.getItem('userId') === this.message.userId;
     }
 
-    private getColor() {
+    getColor() {
         if(this.isBelongsToUser()) return;
 
         const colors = [
