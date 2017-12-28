@@ -8,6 +8,7 @@
     float: right;
     clear: both;
     margin-bottom: 5px;
+    --left-bg-color : #0484da
 }
 
 
@@ -33,8 +34,7 @@
 
 .msg-card-right {
     float: right;
-    background-color: #ea1600;
-    border: 1px solid #ea1600;
+    background-color: #ff6a07;
     padding: 8px 15px;
 }
 .msg-card-right::after {
@@ -43,7 +43,7 @@
     top: 18px;
     right: -18px;
     border: 18px solid transparent;
-    border-top: 18px solid #ea1600;
+    border-top: 18px solid #ff6a07;
 }
 
 .msg-card-right .msg-author {
@@ -52,8 +52,7 @@
 
 .msg-card-left {
     float: left;
-    background-color: #0484da;
-    border: 1px solid #0484da;
+    background-color:  var(--left-bg-color);;
     padding: 8px 15px;
 }
 .msg-card-left::after {
@@ -62,7 +61,7 @@
     top: 18px;
     left: -18px;
     border: 18px solid transparent;
-    border-top: 18px solid #0484da;
+    border-top: 18px solid var(--left-bg-color);
 }
 
 .msg-card-left .msg-config {

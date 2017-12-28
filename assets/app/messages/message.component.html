@@ -1,4 +1,4 @@
-<div class="msg-card" [class.msg-card-left]= "!isBelongsToUser()" [class.msg-card-right]= "isBelongsToUser()" >
+<div class="msg-card" [class.msg-card-left]="!isBelongsToUser()" [class.msg-card-right]="isBelongsToUser()" style="--left-bg-color:{{getColor()}}" [attr.style]="sanitizer.bypassSecurityTrustStyle('--left-bg-color: ' + getColor())" >
     <div class="msg-card-body">
         {{message.content}}
     </div>
@@ -8,7 +8,7 @@
         </div>
         <div *ngIf="isBelongsToUser()" class="msg-config">
             <a (click)="onEdit()">Edit</a> |
-            <a (click)="onDelete()" >Delete</a>
+            <a (click)="onDelete()">Delete</a>
         </div>
     </footer>
 </div>

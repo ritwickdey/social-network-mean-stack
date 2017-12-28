@@ -1,4 +1,5 @@
 import { MessageService } from './messages.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Message } from './message.model';
 
@@ -13,7 +14,7 @@ export class MessageComponent implements OnInit {
 
     @Input() message: Message;
 
-    constructor(private messageService: MessageService) { }
+    constructor(private messageService: MessageService, private sanitizer: DomSanitizer) { }
 
     ngOnInit() { }
 
@@ -28,5 +29,31 @@ export class MessageComponent implements OnInit {
 
     isBelongsToUser() {
         return localStorage.getItem('userId') === this.message.userId;
+    }
+
+    private getColor() {
+        if(this.isBelongsToUser()) return;
+
+        const colors = [
+            "#16a085",
+            "#f1c40f",
+            "#f39c12",
+            "#2ecc71",
+            "#27ae60",
+            "#d35400",
+            "#3498db",
+            "#8e44ad",
+            "#9b59b6",
+            "#607D8B",
+            "#795548",
+            "#3F51B5"
+        ];
+        const total = this.message.userId
+            .split('')
+            .reduce((prev, current) => {
+                return prev + +current ? +current : 0;
+            }, 0);
+
+        return colors[total % colors.length];
     }
 }
