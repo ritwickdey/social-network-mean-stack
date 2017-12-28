@@ -1,6 +1,10 @@
-<div class="container">
-    <app-header></app-header>
-    <hr>
-    <router-outlet></router-outlet>
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-sm-12 mr-auto">
+        <app-header></app-header>
+        <div class="container">
+            <hr>
+            <router-outlet></router-outlet>
+        </div>
+        <app-error></app-error>
+    </div>
 </div>
-<app-error></app-error>

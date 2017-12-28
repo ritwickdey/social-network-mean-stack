@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-message-list',
     template: `
-        <div class="col-md-8 offset-md-2">
+        <div>
                 <app-message
                     *ngFor="let message of messages"
                     [message]="message">
