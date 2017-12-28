@@ -1,6 +1,6 @@
 <div class="chat-room"  *ngIf="messages.length !== 0" >
     <app-message
-        *ngFor="let message of messages.reverse(); trackBy:message?.messageId"
+        *ngFor="let message of messages.slice().reverse(); trackBy:message?.messageId"
         [message]="message">
     </app-message>
 </div>
