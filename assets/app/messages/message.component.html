@@ -1,14 +1,14 @@
-<article class="card">
-    <div class="card-body">
+<div class="msg-card" [class.msg-card-left]= "!isBelongsToUser()" [class.msg-card-right]= "isBelongsToUser()" >
+    <div class="msg-card-body">
         {{message.content}}
     </div>
-    <footer class="card-footer">
-        <div class="author">
+    <footer class="msg-card-footer">
+        <div class="msg-author">
             {{message.username}}
         </div>
-        <div *ngIf="isBelongsToUser()" class="config">
-            <a (click)="onEdit()">Edit</a>
+        <div *ngIf="isBelongsToUser()" class="msg-config">
+            <a (click)="onEdit()">Edit</a> |
             <a (click)="onDelete()" >Delete</a>
         </div>
     </footer>
-</article>
+</div>

@@ -1,21 +1,75 @@
-.author {
+.msg {
+    height: 100%;
+    width: 100%;
+}
+
+.msg-card {
+    position: relative;
+    max-width: 45%;
+    min-width: 30%;
+    display: block;
+    color: #fff;
+    border-radius: 17px;
+    float: right;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+
+.msg-card-body {
+    display: block;
+    padding: 2px 0px;
+    font-size: 16px;
+    
+}
+
+.msg-card-footer {
+    display: block;
+    padding: 2px 0px;
+    padding-bottom: 0;
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.msg-author,
+.msg-config {
     display: inline-block;
-    width: 75%;
-    font-size: 14px;
-    text-transform: uppercase; 
 }
 
-.config {
-    display: inline-block;
-    text-align: right;
-    width: 20%;
-    font-size: 14px;
+.msg-card-right {
+    float: right;
+    background-color: #ea1600;
+    border: 1px solid #ea1600;
+    padding: 8px 15px;
+}
+.msg-card-right::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: -18px;
+    border: 18px solid transparent;
+    border-top: 18px solid #ea1600;
 }
 
-.config a {
-    padding: 0 5px;
+.msg-card-right .msg-author {
+    float: right;
 }
 
-.card {
-    margin: 25px 0;
+.msg-card-left {
+    float: left;
+    background-color: #0484da;
+    border: 1px solid #0484da;
+    padding: 8px 15px;
+}
+.msg-card-left::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: -18px;
+    border: 18px solid transparent;
+    border-top: 18px solid #0484da;
+}
+
+.msg-card-left .msg-config {
+    float: right;
 }
